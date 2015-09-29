@@ -1,3 +1,19 @@
+import processing.core.*; 
+import processing.data.*; 
+import processing.event.*; 
+import processing.opengl.*; 
+
+import java.util.HashMap; 
+import java.util.ArrayList; 
+import java.io.File; 
+import java.io.BufferedReader; 
+import java.io.PrintWriter; 
+import java.io.InputStream; 
+import java.io.OutputStream; 
+import java.io.IOException; 
+
+public class Chemotaxis extends PApplet {
+
  //http://images.fineartamerica.com/images-medium-large/stars-in-the-night-sky-natthawut-punyosaeng.jpg
  //http://i.ytimg.com/vi/w7JrHIHi8t0/hqdefault.jpg
 
@@ -5,7 +21,7 @@ Jumper bob;
 Jumper [] colonyBob;
 Walker fred;  
 Walker [] colonyFred;
-void setup()   
+public void setup()   
  {     
  	size (500,500);
  	bob = new Jumper();
@@ -21,7 +37,7 @@ void setup()
  		colonyFred[b] = new Walker();
  	}
  }   
- void draw()   
+ public void draw()   
  {   
  	int m = 7*height/8;
  	frameRate(10);
@@ -67,12 +83,12 @@ void setup()
  		myX = 250;
  		myY = 250;
  	} 
- 	void jump()
+ 	public void jump()
  	{
  		myX = (int)(Math.random()*width);
  		myY = (int)(Math.random()*11*height/16);
  	}
- 	void show()
+ 	public void show()
  	{
  		noStroke();
  		int b = (int)(Math.random()*255);
@@ -89,12 +105,12 @@ void setup()
  		myX = (int)(Math.random()*width);
  		myY = (int)(Math.random()*11*height/16);
  	}
- 	void walk()
+ 	public void walk()
  	{
  		myX = myX + (int)(Math.random()*3)-1;
  		myY = myY + (int)(Math.random()*3)-1;
  	}
- 	void show()
+ 	public void show()
  	{
  		noStroke();
  		int b = (int)(Math.random()*255);
@@ -104,3 +120,12 @@ void setup()
  	}
 
  }  
+  static public void main(String[] passedArgs) {
+    String[] appletArgs = new String[] { "Chemotaxis" };
+    if (passedArgs != null) {
+      PApplet.main(concat(appletArgs, passedArgs));
+    } else {
+      PApplet.main(appletArgs);
+    }
+  }
+}
